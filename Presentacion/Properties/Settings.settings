@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Presentacion.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Url" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://servidor4distri.somee.com/servicios/Services.svc</Value>
+    </Setting>
+    <Setting Name="signalr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://servidor4distri.somee.com/signalr/chat</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

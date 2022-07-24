@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Movil.MainPage">
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackLayout BackgroundColor="WhiteSmoke" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                    <ContentView Padding="20,40,0,40" VerticalOptions="FillAndExpand">
+                        <Label x:Name="labelBienvenido" TextColor="Black" Text="Bienvenido " FontSize="Title" FontAttributes="Bold"/>
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                    <Label x:Name="labelSucursal" TextColor="Black" TextType="Html" Text="&lt;strong style=&quot;color:red&quot;&gt;Sucursal: &lt;/strong&gt; " FontSize="16" Padding="0,0,0,0"/>
+                    <Label x:Name="labelUbicacion" TextColor="Black" TextType="Html" Text="&lt;strong style=&quot;color:red&quot;&gt;Ubicación: &lt;/strong&gt; " FontSize="16" Padding="0,0,0,40"/>
+                    <Button  CornerRadius="100" Text="Alerta" Clicked="Button_Clicked" FontAttributes="Bold" TextColor="White" WidthRequest="200" HeightRequest="200" HorizontalOptions="Center"  BackgroundColor="red"  Grid.Row="0" Grid.Column="0" />
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

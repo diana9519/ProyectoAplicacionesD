@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoFinalDistri3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OFFICE">
+          <Key>
+            <PropertyRef Name="ID_OFFICE" />
+          </Key>
+          <Property Name="ID_OFFICE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME_OFFICE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIR_OFFICE" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="PHONE_OFFICE" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OFFICE_DETAIL">
+          <Key>
+            <PropertyRef Name="ID_DETAIL" />
+          </Key>
+          <Property Name="ID_DETAIL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATE_DETAIL" Type="datetime" Nullable="false" />
+          <Property Name="ID_USER_DETAIL" Type="int" Nullable="false" />
+          <Property Name="LOCATION_DETAIL" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER_OFFICE">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME_USER" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LAST_USER" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="USER_USER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD_USER" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="ID_OFFICE_USER" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ID_OFFICE_USER">
+          <End Role="OFFICE" Type="Self.OFFICE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USER_OFFICE" Type="Self.USER_OFFICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICE">
+              <PropertyRef Name="ID_OFFICE" />
+            </Principal>
+            <Dependent Role="USER_OFFICE">
+              <PropertyRef Name="ID_OFFICE_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_DETAIL">
+          <End Role="USER_OFFICE" Type="Self.USER_OFFICE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OFFICE_DETAIL" Type="Self.OFFICE_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_OFFICE">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="OFFICE_DETAIL">
+              <PropertyRef Name="ID_USER_DETAIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoFinalDistri3ModelStoreContainer">
+          <EntitySet Name="OFFICE" EntityType="Self.OFFICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OFFICE_DETAIL" EntityType="Self.OFFICE_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_OFFICE" EntityType="Self.USER_OFFICE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ID_OFFICE_USER" Association="Self.FK_ID_OFFICE_USER">
+            <End Role="OFFICE" EntitySet="OFFICE" />
+            <End Role="USER_OFFICE" EntitySet="USER_OFFICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_DETAIL" Association="Self.FK_USER_DETAIL">
+            <End Role="USER_OFFICE" EntitySet="USER_OFFICE" />
+            <End Role="OFFICE_DETAIL" EntitySet="OFFICE_DETAIL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoFinalDistri3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OFFICE">
+          <Key>
+            <PropertyRef Name="ID_OFFICE" />
+          </Key>
+          <Property Name="ID_OFFICE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_OFFICE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIR_OFFICE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PHONE_OFFICE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USER_OFFICE" Relationship="Self.FK_ID_OFFICE_USER" FromRole="OFFICE" ToRole="USER_OFFICE" />
+        </EntityType>
+        <EntityType Name="OFFICE_DETAIL">
+          <Key>
+            <PropertyRef Name="ID_DETAIL" />
+          </Key>
+          <Property Name="ID_DETAIL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATE_DETAIL" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_USER_DETAIL" Type="Int32" Nullable="false" />
+          <Property Name="LOCATION_DETAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USER_OFFICE" Relationship="Self.FK_USER_DETAIL" FromRole="OFFICE_DETAIL" ToRole="USER_OFFICE" />
+        </EntityType>
+        <EntityType Name="USER_OFFICE">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_USER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_USER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USER_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD_USER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_OFFICE_USER" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OFFICE" Relationship="Self.FK_ID_OFFICE_USER" FromRole="USER_OFFICE" ToRole="OFFICE" />
+          <NavigationProperty Name="OFFICE_DETAIL" Relationship="Self.FK_USER_DETAIL" FromRole="USER_OFFICE" ToRole="OFFICE_DETAIL" />
+        </EntityType>
+        <Association Name="FK_ID_OFFICE_USER">
+          <End Role="OFFICE" Type="Self.OFFICE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USER_OFFICE" Type="Self.USER_OFFICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICE">
+              <PropertyRef Name="ID_OFFICE" />
+            </Principal>
+            <Dependent Role="USER_OFFICE">
+              <PropertyRef Name="ID_OFFICE_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_DETAIL">
+          <End Role="USER_OFFICE" Type="Self.USER_OFFICE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OFFICE_DETAIL" Type="Self.OFFICE_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_OFFICE">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="OFFICE_DETAIL">
+              <PropertyRef Name="ID_USER_DETAIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoFinal" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OFFICE" EntityType="Self.OFFICE" />
+          <EntitySet Name="OFFICE_DETAIL" EntityType="Self.OFFICE_DETAIL" />
+          <EntitySet Name="USER_OFFICE" EntityType="Self.USER_OFFICE" />
+          <AssociationSet Name="FK_ID_OFFICE_USER" Association="Self.FK_ID_OFFICE_USER">
+            <End Role="OFFICE" EntitySet="OFFICE" />
+            <End Role="USER_OFFICE" EntitySet="USER_OFFICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_DETAIL" Association="Self.FK_USER_DETAIL">
+            <End Role="USER_OFFICE" EntitySet="USER_OFFICE" />
+            <End Role="OFFICE_DETAIL" EntitySet="OFFICE_DETAIL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoFinalDistri3ModelStoreContainer" CdmEntityContainer="ProyectoFinal">
+          <EntitySetMapping Name="OFFICE">
+            <EntityTypeMapping TypeName="ProyectoFinalDistri3Model.OFFICE">
+              <MappingFragment StoreEntitySet="OFFICE">
+                <ScalarProperty Name="ID_OFFICE" ColumnName="ID_OFFICE" />
+                <ScalarProperty Name="NAME_OFFICE" ColumnName="NAME_OFFICE" />
+                <ScalarProperty Name="DIR_OFFICE" ColumnName="DIR_OFFICE" />
+                <ScalarProperty Name="PHONE_OFFICE" ColumnName="PHONE_OFFICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OFFICE_DETAIL">
+            <EntityTypeMapping TypeName="ProyectoFinalDistri3Model.OFFICE_DETAIL">
+              <MappingFragment StoreEntitySet="OFFICE_DETAIL">
+                <ScalarProperty Name="ID_DETAIL" ColumnName="ID_DETAIL" />
+                <ScalarProperty Name="DATE_DETAIL" ColumnName="DATE_DETAIL" />
+                <ScalarProperty Name="ID_USER_DETAIL" ColumnName="ID_USER_DETAIL" />
+                <ScalarProperty Name="LOCATION_DETAIL" ColumnName="LOCATION_DETAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_OFFICE">
+            <EntityTypeMapping TypeName="ProyectoFinalDistri3Model.USER_OFFICE">
+              <MappingFragment StoreEntitySet="USER_OFFICE">
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="NAME_USER" ColumnName="NAME_USER" />
+                <ScalarProperty Name="LAST_USER" ColumnName="LAST_USER" />
+                <ScalarProperty Name="USER_USER" ColumnName="USER_USER" />
+                <ScalarProperty Name="PASSWORD_USER" ColumnName="PASSWORD_USER" />
+                <ScalarProperty Name="ID_OFFICE_USER" ColumnName="ID_OFFICE_USER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
