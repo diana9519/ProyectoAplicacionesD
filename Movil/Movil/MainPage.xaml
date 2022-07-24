@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Movil.MainPage"
+             BackgroundColor="White">
+             
+    <StackLayout>
+        <Grid VerticalOptions="Center">
+            <Grid VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="auto"/>
+                    <RowDefinition  Height="*"/>
+                    <RowDefinition  Height="auto"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="logo2.jpg" WidthRequest="100" HeightRequest="100" Margin="0,50,0,30"/>
+                <StackLayout Grid.Row="1" Padding="30,20" >
+                    <Entry x:Name="texBoxUser" TextColor="Black" Background="whiteSmoke" Placeholder="Usuario" PlaceholderColor="Gray" Margin="30,20"/>
+                    <Entry x:Name="textBoxpass" TextColor="Black"  Background="whiteSmoke"  Placeholder="Contraseña" PlaceholderColor="Gray" IsPassword="True" Margin="30,20"/>
+                    <Button Text="Iniciar Sesión" Background="black" CornerRadius="40" TextColor="White" Margin="30,20"
+                            Clicked="Button_ClickedAsync"/>
+                </StackLayout>
+            </Grid>
+        </Grid>        
+       
+    </StackLayout>
+
+</ContentPage>
