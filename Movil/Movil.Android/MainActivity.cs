@@ -28,7 +28,6 @@ namespace Movil.Droid
             LoadApplication(new App());
             NotificationCenter.NotifyNotificationTapped(Intent);
         }
-
         protected override void OnNewIntent(Intent intent)
         {
             NotificationCenter.NotifyNotificationTapped(intent);

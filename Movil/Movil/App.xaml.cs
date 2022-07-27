@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +10,15 @@ namespace Movil
         public App()
         {
             InitializeComponent();
+            if (Preferences.ContainsKey("user"))
+            {
+                MainPage = new NavigationPage(new HomePage());
 
-            MainPage = new NavigationPage(new LoginPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
         }
 
         protected override void OnStart()

@@ -1,0 +1,12 @@
+C:\Users\javi2\source\repos\ProyectoAD\Entidades\bin\Debug\Entidades.dll
+C:\Users\javi2\source\repos\ProyectoAD\Entidades\bin\Debug\Entidades.pdb
+C:\Users\javi2\source\repos\ProyectoAD\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\javi2\source\repos\ProyectoAD\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\javi2\source\repos\ProyectoAD\Entidades\obj\Debug\Entidades.dll
+C:\Users\javi2\source\repos\ProyectoAD\Entidades\obj\Debug\Entidades.pdb
+C:\Users\javi2\source\repos\ProyectoAD\ProyectoAD\Entidades\bin\Debug\Entidades.dll
+C:\Users\javi2\source\repos\ProyectoAD\ProyectoAD\Entidades\bin\Debug\Entidades.pdb
+C:\Users\javi2\source\repos\ProyectoAD\ProyectoAD\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\javi2\source\repos\ProyectoAD\ProyectoAD\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\javi2\source\repos\ProyectoAD\ProyectoAD\Entidades\obj\Debug\Entidades.dll
+C:\Users\javi2\source\repos\ProyectoAD\ProyectoAD\Entidades\obj\Debug\Entidades.pdb

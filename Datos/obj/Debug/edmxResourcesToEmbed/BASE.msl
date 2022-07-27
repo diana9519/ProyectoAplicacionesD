@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProyectoFinalDistri3ModelStoreContainer" CdmEntityContainer="ProyectoFinal">
+    <EntitySetMapping Name="OFFICE">
+      <EntityTypeMapping TypeName="ProyectoFinalDistri3Model.OFFICE">
+        <MappingFragment StoreEntitySet="OFFICE">
+          <ScalarProperty Name="ID_OFFICE" ColumnName="ID_OFFICE" />
+          <ScalarProperty Name="NAME_OFFICE" ColumnName="NAME_OFFICE" />
+          <ScalarProperty Name="DIR_OFFICE" ColumnName="DIR_OFFICE" />
+          <ScalarProperty Name="PHONE_OFFICE" ColumnName="PHONE_OFFICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OFFICE_DETAIL">
+      <EntityTypeMapping TypeName="ProyectoFinalDistri3Model.OFFICE_DETAIL">
+        <MappingFragment StoreEntitySet="OFFICE_DETAIL">
+          <ScalarProperty Name="ID_DETAIL" ColumnName="ID_DETAIL" />
+          <ScalarProperty Name="DATE_DETAIL" ColumnName="DATE_DETAIL" />
+          <ScalarProperty Name="ID_USER_DETAIL" ColumnName="ID_USER_DETAIL" />
+          <ScalarProperty Name="LOCATION_DETAIL" ColumnName="LOCATION_DETAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_OFFICE">
+      <EntityTypeMapping TypeName="ProyectoFinalDistri3Model.USER_OFFICE">
+        <MappingFragment StoreEntitySet="USER_OFFICE">
+          <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+          <ScalarProperty Name="NAME_USER" ColumnName="NAME_USER" />
+          <ScalarProperty Name="LAST_USER" ColumnName="LAST_USER" />
+          <ScalarProperty Name="USER_USER" ColumnName="USER_USER" />
+          <ScalarProperty Name="PASSWORD_USER" ColumnName="PASSWORD_USER" />
+          <ScalarProperty Name="ID_OFFICE_USER" ColumnName="ID_OFFICE_USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -30,10 +30,10 @@ namespace Movil
                 if (responseServer.Length > 2)
                 {
                     Preferences.Set("user", responseServer);
-                    // await  DisplayAlert("ERROR", "hasta aqui", "OK");
+
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await Navigation.PushAsync(new MainPage());
+                        await Navigation.PushAsync(new HomePage());
                     });
                     // 
                 }

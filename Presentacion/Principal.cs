@@ -12,6 +12,7 @@ namespace Presentacion
 {
     public partial class Principal : Form
     {
+
         private Form inicio = new Inicio();
         private Form sucursal = new Sucursales();
         private Form usuarios = new Usuarios();
@@ -24,12 +25,14 @@ namespace Presentacion
 
         private void buttonInicio_Click(object sender, EventArgs e)
         {
+
             openChildForm("inicio");
 
         }
 
         private void buttonSucursales_Click(object sender, EventArgs e)
         {
+
             openChildForm("sucursal");
         }
 
@@ -79,7 +82,6 @@ namespace Presentacion
 
 
         }
-
         private void Principal_Load(object sender, EventArgs e)
         {
             openChildForm("inicio");

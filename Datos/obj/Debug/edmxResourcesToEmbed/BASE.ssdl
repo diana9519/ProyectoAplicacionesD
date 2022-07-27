@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoFinalDistri3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="OFFICE">
+    <Key>
+      <PropertyRef Name="ID_OFFICE" />
+    </Key>
+    <Property Name="ID_OFFICE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME_OFFICE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DIR_OFFICE" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="PHONE_OFFICE" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OFFICE_DETAIL">
+    <Key>
+      <PropertyRef Name="ID_DETAIL" />
+    </Key>
+    <Property Name="ID_DETAIL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DATE_DETAIL" Type="datetime" Nullable="false" />
+    <Property Name="ID_USER_DETAIL" Type="int" Nullable="false" />
+    <Property Name="LOCATION_DETAIL" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER_OFFICE">
+    <Key>
+      <PropertyRef Name="ID_USER" />
+    </Key>
+    <Property Name="ID_USER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME_USER" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="LAST_USER" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="USER_USER" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PASSWORD_USER" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="ID_OFFICE_USER" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ID_OFFICE_USER">
+    <End Role="OFFICE" Type="Self.OFFICE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="USER_OFFICE" Type="Self.USER_OFFICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFFICE">
+        <PropertyRef Name="ID_OFFICE" />
+      </Principal>
+      <Dependent Role="USER_OFFICE">
+        <PropertyRef Name="ID_OFFICE_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_DETAIL">
+    <End Role="USER_OFFICE" Type="Self.USER_OFFICE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OFFICE_DETAIL" Type="Self.OFFICE_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER_OFFICE">
+        <PropertyRef Name="ID_USER" />
+      </Principal>
+      <Dependent Role="OFFICE_DETAIL">
+        <PropertyRef Name="ID_USER_DETAIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProyectoFinalDistri3ModelStoreContainer">
+    <EntitySet Name="OFFICE" EntityType="Self.OFFICE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OFFICE_DETAIL" EntityType="Self.OFFICE_DETAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_OFFICE" EntityType="Self.USER_OFFICE" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ID_OFFICE_USER" Association="Self.FK_ID_OFFICE_USER">
+      <End Role="OFFICE" EntitySet="OFFICE" />
+      <End Role="USER_OFFICE" EntitySet="USER_OFFICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_DETAIL" Association="Self.FK_USER_DETAIL">
+      <End Role="USER_OFFICE" EntitySet="USER_OFFICE" />
+      <End Role="OFFICE_DETAIL" EntitySet="OFFICE_DETAIL" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
